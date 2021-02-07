@@ -103,36 +103,33 @@
 			<label class=displayField id=displayHere></label>
 			<br>
 			<br>
-			<button class=buttonOper id='plus' value="+">+</button>
-			<button class=buttonOper id='minus' value=->-</button>
-			<button class=buttonBack id='backspace' value="<">
+			<button class=buttonOper id='plus' value="+" data-shortcutKey='+'>+</button>
+			<button class=buttonOper id='minus' value=- data-shortcutKey='-'>-</button>
+			<button class=buttonBack id='backspace' value="<" data-shortcutKey='Backspace'>
 				BACK</button>
-			<button class=buttonOper id='exponent' value=^>^</button>
-			<button class=buttonOper id='divide' value=÷>÷
+			<button class=buttonOper id='exponent' value=^ data-shortcutKey='^'>^</button>
+			<button class=buttonOper id='divide' value=÷ data-shortcutKey='/'>÷
 			</button>
-			<button class=buttonOper id='multiply' value=*>x</button>
-			<button class=button id='one' value=1>1</button>
-			<button class=button id='two' value=2>2</button>
-			<button class=button id='three' value=3>3</button>
-			<button class=button id='four' value=4>4</button>
-			<button class=button id='five' value=5>5</button>
-			<button class=button id='six' value=6>6</button>
-			<button class=button id='seven' value=7>7</button>
-			<button class=button id='eight' value=8>8</button>
-			<button class=button id='nine' value=9>9</button>
-			<button class=button id='zero' value=0>0</button>
-			<button class="button dec" id='decimal' value=.>.</button>
+			<button class=buttonOper id='multiply' value=* data-shortcutKey='*'>x</button>
+			<button class=button id='one' value=1 data-shortcutKey=1>1</button>
+			<button class=button id='two' value=2 data-shortcutKey=2>2</button>
+			<button class=button id='three' value=3 data-shortcutKey=3>3</button>
+			<button class=button id='four' value=4 data-shortcutKey=4>4</button>
+			<button class=button id='five' value=5 data-shortcutKey=5>5</button>
+			<button class=button id='six' value=6 data-shortcutKey=6>6</button>
+			<button class=button id='seven' value=7 data-shortcutKey=7>7</button>
+			<button class=button id='eight' value=8 data-shortcutKey=8>8</button>
+			<button class=button id='nine' value=9 data-shortcutKey=9>9</button>
+			<button class=button id='zero' value=0 data-shortcutKey=0>0</button>
+			<button class="button dec" id='decimal' value=. data-shortcutKey=.>.</button>
 
 			<div class=bottomCalc>
-				<button class="buttonBig clear" id='clear' value=0>CLEAR</button>
-				<button class="buttonBig equal" id='equal'>=</button>
+				<button class="buttonBig clear" id='clear' value=0 data-shortcutKey='Escape'>CLEAR</button>
+				<button class="buttonBig equal" id='equal' data-shortcutKey='='>=</button>
 
 			</div>
 		</div>
 	</div>
-
-
-
 
 </body>
 <script>
@@ -140,6 +137,9 @@
 	const isButton = document.querySelectorAll('button[class^=but]');
 	let firstInput = [];
 	let b;
+
+	//keyboard support
+	document.addEventListener('keydown', (e) => document.querySelector('button[data-shortcutKey ="' + e.key + '"]').click());
 
 	for (var i = 0; i < isButton.length; i++) {
 		isButton[i].addEventListener("click", function () {
